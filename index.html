@@ -20,10 +20,10 @@
                     Issues Tracker</a>
             </div>
             <div class="flex gap-2">
-                <input type="text" placeholder="Search" class="input input-bordered w-24 md:w-auto" />
+                <input type="text" id="search" placeholder="Search" class="input input-bordered w-24 md:w-auto" />
                 <button class="px-2 py-1 rounded-sm bg-primary flex items-center justify-center">
                     <i class="fa-solid fa-plus text-white"></i>
-                    <h1 class=" text-white">New Issus</h1>
+                    <h1 class=" text-white">Add</h1>
                 </button>
             </div>
         </div>
@@ -31,10 +31,10 @@
 
     <main class=" container mx-auto">
         <section class=" my-2 ">
-            <div class="p-3 bg-white w-full rounded-sm">
-                <button class="btn btn-neutral bg-primary text-white btn-outline w-28">All</button>
-                <button class="btn btn-neutral bg-primary text-white btn-outline w-28">Open</button>
-                <button class="btn btn-neutral bg-primary text-white btn-outline w-28">Closed</button>
+            <div id="main_btn" class="btn_container p-3 bg-white w-full rounded-sm">
+                <button id="all_btn" onclick="select_btn('all')" class="btn hover:btn-neutral bg-primary text-white btn-outline w-28">All</button>
+                <button id="open_btn" onclick="select_btn('open')" class="btn hover:btn-neutral w-28">Open</button>
+                <button id="close_btn" onclick="select_btn('closed')" class="btn hover:btn-neutral w-28">Closed</button>
             </div>
         </section>
 

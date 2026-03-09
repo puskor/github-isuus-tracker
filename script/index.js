@@ -4,40 +4,28 @@
 
 
 
-const allData = () => {
-    fetch("https://phi-lab-server.vercel.app/api/v1/lab/issues")
-        .then((res) => res.json())
-        .then((data) => showCard(data.data))
-    // .then((data) => console.log(data.data))
+const stor = document.getElementById("AllCard");
+function showCard(data) {
+    data.forEach(element => {
+        let textColor = "1F2937";
+        let bgColor = "#EEEFF2"
+        if (element.priority == "high") {
+            textColor = "#EF4444"
+            bgColor = "#FEECEC"
+        }
+        else if (element.priority == "medium") {
+            textColor = "#F59E0B"
+            bgColor = "#FFF6D1";
+        }
 
-    const stor = document.getElementById("AllCard");
-
-
-    function showCard(data) {
-        data.forEach(element => {
-            let textColor = "1F2937";
-            let bgColor = "#EEEFF2"
-            if (element.priority == "high") {
-                textColor = "#EF4444"
-                bgColor = "#FEECEC"
-            }
-            else if (element.priority == "medium") {
-                textColor = "#F59E0B"
-                bgColor = "#FFF6D1";
-            }
-
-            let topColor = "#00A96E";
-            let statusImg = "assets/Open-Status.png";
-            if (element.status == "closed") {
-                statusImg = "assets/Closed- Status .png";
-                topColor = "#A855F7";
-            }
-
-
-
-
-            const div = document.createElement("div");
-            div.innerHTML = `
+        let topColor = "#00A96E";
+        let statusImg = "assets/Open-Status.png";
+        if (element.status == "closed") {
+            statusImg = "assets/Closed- Status .png";
+            topColor = "#A855F7";
+        }
+        const div = document.createElement("div");
+        div.innerHTML = `
                             <div class="p-5 card bg-base-100 shadow-lg  border-t-8 border-[${topColor}]">
                     <div class=" flex justify-between">
                         <img class="w-8 h-8" src="${statusImg}" alt="">
@@ -53,9 +41,9 @@ const allData = () => {
                         <div class="mt-2 h-28 gap-2">
                            
                             <div class="flex flex-wrap">
-                                ${element.labels.map(label=>
-                                   `<h1 class="bg-[#FECACA] border border-[#EF4444] text-[#EF4444] rounded-2xl px-2 py-1 m-1">${label}</h1>`
-                                ).join(" ")}
+                                ${element.labels.map(label =>
+            `<h1 class="bg-[#FECACA] border border-[#EF4444] text-[#EF4444] rounded-2xl px-2 py-1 m-1">${label}</h1>`
+        ).join(" ")}
                             </div>
                             <button
                                 class="bg-[#FFF8DB] text-[#D97706] w-48 h-8 border border-[#FDE68A]  py-1 rounded-2xl flex items-center justify-center gap-1">
@@ -66,17 +54,12 @@ const allData = () => {
                     <h1 class="text-[14px] text-[#64748B]">#${element.assignee}</h1>
                     <h2 class="text-[14px] text-[#64748B]">${element.createdAt}</h2>
                 </div>
-
-
-
         `
-            stor.appendChild(div);
+        stor.appendChild(div);
+    });
 
-        });
-
-        const total = stor.children.length;
-        totalCount(total);
-    }
+    const total = stor.children.length;
+    totalCount(total);
 }
 
 
@@ -85,4 +68,46 @@ function totalCount(data) {
     total.innerText = `${data} Issus`;
 }
 
-allData()
+// allData()
+
+
+
+document.getElementById("main_btn").addEventListener("click", (even) => {
+    const all_btn = document.querySelectorAll(".btn");
+    const target_btn = even.target.closest("button");
+    all_btn.forEach(btn => {
+        btn.classList.remove("bg-primary", "text-white", "btn-outline")
+    })
+    target_btn.classList.add("bg-primary", "text-white", "btn-outline")
+})
+
+
+const data = document.getElementById("total_issus");
+
+fetch("https://phi-lab-server.vercel.app/api/v1/lab/issues")
+        .then((res) => res.json())
+        .then((data) => showCard(data.data));
+
+
+function select_btn(type) {
+    stor.innerText=" ";
+    fetch("https://phi-lab-server.vercel.app/api/v1/lab/issues")
+        .then((res) => res.json())
+        .then((data) => {
+            const allData = data.data;
+            let filterData;
+
+            if (type == "open") {
+                filterData = allData.filter((item) => item.status == "open");
+            }
+            else if (type == "closed") {
+                filterData = allData.filter((item) => item.status == "closed");
+            } 
+            else {
+                filterData = allData;
+            }
+            showCard(filterData);
+        })
+
+
+}
