@@ -130,6 +130,7 @@ function totalCount(data) {
 document.getElementById("main_btn").addEventListener("click", (even) => {
     const all_btn = document.querySelectorAll(".btn");
     const target_btn = even.target.closest("button");
+    if(!target_btn) return ;
     all_btn.forEach(btn => {
         btn.classList.remove("bg-primary", "text-white", "btn-outline")
     })
