@@ -12,64 +12,85 @@
         crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 
-<body class="bg-[#E9E9E9] pb-[100px]">
-    <nav>
-        <div class="navbar bg-base-100 shadow-sm">
-            <div class="flex-1">
-                <a class="btn btn-ghost text-xl"> <img class="w-8 h-8" src="assets/github-logo.png" alt=""> GitHub
-                    Issues Tracker</a>
+<body>
+    <div id="login" class="logIn hidden">
+        <div class="p-5  w-[450px] mx-auto mt-[10%] card bg-base-100 shadow-lg">
+            <img src="assets/github-logo.png" class="w-20 h-20 mx-auto" alt="">
+            <div class="flex flex-col items-center">
+                <h1 class="text-[24px] font-semibold">GitHub Issues Tracker</h1>
+                <p class="text-[14px] text-[#64748B]">Sign in to manage your issues</p>
             </div>
-            <div class="flex gap-2">
-                <input type="text" id="search" placeholder="Search" class="input input-bordered w-24 md:w-auto" />
-                <button class="px-2 py-1 rounded-sm bg-primary flex items-center justify-center">
-                    <i class="fa-solid fa-plus text-white"></i>
-                    <h1 class=" text-white">Add</h1>
-                </button>
-            </div>
+            <label class="text-[16px]" for="">Username</label>
+            <input id="user_name" type="text" placeholder="Enter Username" class="p-2 rounded-sm">
+
+            <label class="text-[16px] mt-5" for="">Password</label>
+            <input id="password" type="password" placeholder="Enter Password" class="p-2 rounded-sm">
+
+            <button id="login_btn" class="bg-blue-700 text-white p-2 rounded-xl mt-5">Sign In</button>
+
         </div>
-    </nav>
 
-    <main class=" container mx-auto">
-        <section class=" my-2 ">
-            <div id="main_btn" class="btn_container p-3 bg-white w-full rounded-sm">
-                <button id="all_btn" onclick="select_btn('all')"
-                    class="btn hover:btn-neutral bg-primary text-white btn-outline w-28">All</button>
-                <button id="open_btn" onclick="select_btn('open')" class="btn hover:btn-neutral w-28">Open</button>
-                <button id="close_btn" onclick="select_btn('closed')" class="btn hover:btn-neutral w-28">Closed</button>
-            </div>
-        </section>
+    </div>
 
-        <section>
-            <div class="p-3 bg-white w-full rounded-sm flex items-center justify-between">
-                <div class="flex items-center">
-                    <img src="assets/Aperture.png" class="w-10 h-10" alt="">
-                    <div>
-                        <h1 id="total_issus" class="text-[20px] font-semibold">50 Issus</h1>
-                        <h3 class="text-[14px] text-[#64748B]">Track and manage your project issues</h3>
-                    </div>
+
+
+    <div id="main_card" class="bg-[#E9E9E9] pb-[100px] ">
+        <nav >
+            <div class="navbar bg-base-100 shadow-sm">
+                <div class="flex-1">
+                    <a class="btn btn-ghost text-xl"> <img class="w-8 h-8" src="assets/github-logo.png" alt=""> GitHub
+                        Issues Tracker</a>
                 </div>
-                <div class="flex gap-3 items-center">
-                    <div class="flex gap-1 items-center">
-                        <h1 class="bg-[#00A96E] w-4 h-4 rounded-full"></h1>
-                        <h2>Open</h2>
-                    </div>
-                    <div class="flex gap-1 items-center">
-                        <h1 class="bg-[#A855F7] w-4 h-4 rounded-full"></h1>
-                        <h2>Closed</h2>
-                    </div>
+                <div class="flex gap-2 lg:pr-11">
+                    <input type="text" id="search" placeholder="Search" class="input input-bordered w-24 md:w-auto" />
+                    <button id="search_btn" class="px-2 py-1 rounded-sm bg-primary flex items-center justify-center">
+                        <h1 class=" text-white">Search</h1>
+                    </button>
                 </div>
             </div>
-        </section>
-        <hr class="text-gray-300">
-        <section class=" bg-white ">
-            <div id="loading" class="hidden flex justify-center items-center py-7">
-                <span class="loading loading-dots loading-xl"></span>
-                <span class="loading loading-dots loading-xl"></span>
-                <span class="loading loading-dots loading-xl"></span>
-            </div>
-            <div id="AllCard" class="p-4 grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-3">
+        </nav>
+        <main class=" container mx-auto">
+            <section class=" my-2 ">
+                <div id="main_btn" class="btn_container p-3 bg-white w-full rounded-sm">
+                    <button id="all_btn" onclick="select_btn('all')"
+                        class="btn hover:btn-neutral bg-primary text-white btn-outline w-28">All</button>
+                    <button id="open_btn" onclick="select_btn('open')" class="btn hover:btn-neutral w-28">Open</button>
+                    <button id="close_btn" onclick="select_btn('closed')"
+                        class="btn hover:btn-neutral w-28">Closed</button>
+                </div>
+            </section>
 
-                <!-- <div class="p-5 card bg-base-100 shadow-lg h-[350px] border-t-8 border-red-800">
+            <section>
+                <div class="p-3 bg-white w-full rounded-sm flex items-center justify-between">
+                    <div class="flex items-center">
+                        <img src="assets/Aperture.png" class="w-10 h-10" alt="">
+                        <div>
+                            <h1 id="total_issus" class="text-[20px] font-semibold">50 Issus</h1>
+                            <h3 class="text-[14px] text-[#64748B]">Track and manage your project issues</h3>
+                        </div>
+                    </div>
+                    <div class="flex gap-3 items-center">
+                        <div class="flex gap-1 items-center">
+                            <h1 class="bg-[#00A96E] w-4 h-4 rounded-full"></h1>
+                            <h2>Open</h2>
+                        </div>
+                        <div class="flex gap-1 items-center">
+                            <h1 class="bg-[#A855F7] w-4 h-4 rounded-full"></h1>
+                            <h2>Closed</h2>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <hr class="text-gray-300">
+            <section class=" bg-white ">
+                <div id="loading" class="hidden flex justify-center items-center py-7">
+                    <span class="loading loading-dots loading-xl"></span>
+                    <span class="loading loading-dots loading-xl"></span>
+                    <span class="loading loading-dots loading-xl"></span>
+                </div>
+                <div id="AllCard" class="p-4 grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-3">
+
+                    <!-- <div class="p-5 card bg-base-100 shadow-lg h-[350px] border-t-8 border-red-800">
                     <div class=" flex justify-between">
                         <img class="w-8 h-8" src="assets/Closed- Status .png" alt="">
                         <h1 class="bg-red-200 px-3 py-1 rounded-2xl">Status</h1>
@@ -96,10 +117,10 @@
                     <h1 class="text-[14px] text-[#64748B]">date</h1>
                     <h2 class="text-[14px] text-[#64748B]">name</h2>
                 </div> -->
-            </div>
-        </section>
+                </div>
+            </section>
 
-        <!-- <section class="modal"> -->
+            <!-- <section class="modal"> -->
             <!-- Open the modal using ID.showModal() method -->
             <!-- <button class="btn" onclick="my_modal_5.showModal()">open modal</button> -->
 
@@ -107,9 +128,11 @@
                 <div class="modal-box">
                     <h3 id="title" class="text-lg font-bold">Hello!</h3>
                     <div class="flex">
-                        <h2 id="status" class="bg-green-500 text-white rounded-xl px-2 w-20 flex items-center justify-center">Opened</h2>
+                        <h2 id="status"
+                            class="bg-green-500 text-white rounded-xl px-2 w-20 flex items-center justify-center">Opened
+                        </h2>
                         <li class="flex">
-                            <ul class="ml-2 text-[14px] text-[#64748B]">Open by <span id="opener">fahim   </span></ul>
+                            <ul class="ml-2 text-[14px] text-[#64748B]">Open by <span id="opener">fahim </span></ul>
                             <ul id="modal_date" class=" ml-3 text-[14px] text-[#64748B]">date</ul>
                         </li>
                     </div>
@@ -122,7 +145,8 @@
                         </div>
                         <div>
                             <h1>Priority:</h1>
-                            <h2 id="Priority" class="bg-[#FEECEC] px-2 py-1 flex justify-center items-center rounded-xl">high</h2>
+                            <h2 id="Priority"
+                                class="bg-[#FEECEC] px-2 py-1 flex justify-center items-center rounded-xl">high</h2>
                         </div>
                     </div>
                     <div class="modal-action">
@@ -133,10 +157,11 @@
                     </div>
                 </div>
             </dialog>
-        <!-- </section> -->
+            <!-- </section> -->
 
 
-    </main>
+        </main>
+    </div>
 
     <script src="script/index.js"></script>
 

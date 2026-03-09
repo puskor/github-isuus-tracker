@@ -1,6 +1,34 @@
 
+const main_card = document.getElementById("main_card");
+const login = document.getElementById("login");
+const stor = document.getElementById("AllCard");
+
+document.getElementById("login_btn").addEventListener("click", () => {
+    const name = document.getElementById("user_name").value;
+    const pass = document.getElementById("password").value;
 
 
+    if (name == "admin" && pass == "admin123") {
+        main_card.classList.remove("hidden");
+        login.classList.add("hidden");
+    }
+    else {
+        alert("Wrong Username or Password");
+    }
+
+})
+
+// search
+document.getElementById("search_btn").addEventListener("click" , ()=>{
+    stor.innerHTML ="";
+    const search_data = document.getElementById("search").value.trim().toLowerCase();
+    fetch(`https://phi-lab-server.vercel.app/api/v1/lab/issues/search?q=${search_data}`)
+    .then((res)=>res.json())
+    .then((data)=>{
+        const allValue = data.data;
+        showCard(allValue);
+    })
+})
 
 const load_modal = async (id) => {
     const url = `https://phi-lab-server.vercel.app/api/v1/lab/issue/${id}`
@@ -12,8 +40,8 @@ const load_modal = async (id) => {
 
 
 
-const show_modal = (item)=>{
-    
+const show_modal = (item) => {
+
     const title = document.getElementById("title");
     const opener = document.getElementById("opener");
     const modal_date = document.getElementById("modal_date");
@@ -21,18 +49,17 @@ const show_modal = (item)=>{
     const Assignee_name = document.getElementById("Assignee_name");
     const Priority = document.getElementById("Priority");
     const status = document.getElementById("status");
-    title.innerText= `${item.title}`;
+    title.innerText = `${item.title}`;
     opener.innerText = `${item.assignee}`
-    modal_date.innerText =`${item.createdAt}`
-    modal_description.innerText=`${item.description}`
+    modal_date.innerText = `${item.createdAt}`
+    modal_description.innerText = `${item.description}`
     Assignee_name.innerHTML = `${item.assignee}`
     Priority.innerHTML = `${item.priority}`
-    status.innerHTML =`${item.status}`
+    status.innerHTML = `${item.status}`
     my_modal_5.showModal();
 }
 
 
-const stor = document.getElementById("AllCard");
 function showCard(data) {
     data.forEach(element => {
         let textColor = "1F2937";
