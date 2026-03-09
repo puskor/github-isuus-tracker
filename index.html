@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>github issus</title>
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+        integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+
+<body class="bg-[#E9E9E9] pb-[100px]">
+    <nav>
+        <div class="navbar bg-base-100 shadow-sm">
+            <div class="flex-1">
+                <a class="btn btn-ghost text-xl"> <img class="w-8 h-8" src="assets/github-logo.png" alt=""> GitHub
+                    Issues Tracker</a>
+            </div>
+            <div class="flex gap-2">
+                <input type="text" placeholder="Search" class="input input-bordered w-24 md:w-auto" />
+                <button class="px-2 py-1 rounded-sm bg-primary flex items-center justify-center">
+                    <i class="fa-solid fa-plus text-white"></i>
+                    <h1 class=" text-white">New Issus</h1>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <main class=" container mx-auto">
+        <section class=" my-2 ">
+            <div class="p-3 bg-white w-full rounded-sm">
+                <button class="btn btn-neutral bg-primary text-white btn-outline w-28">All</button>
+                <button class="btn btn-neutral bg-primary text-white btn-outline w-28">Open</button>
+                <button class="btn btn-neutral bg-primary text-white btn-outline w-28">Closed</button>
+            </div>
+        </section>
+
+        <section>
+            <div class="p-3 bg-white w-full rounded-sm flex items-center justify-between">
+                <div class="flex items-center">
+                    <img src="assets/Aperture.png" class="w-10 h-10" alt="">
+                    <div>
+                        <h1 id="total_issus" class="text-[20px] font-semibold">50 Issus</h1>
+                        <h3 class="text-[14px] text-[#64748B]">Track and manage your project issues</h3>
+                    </div>
+                </div>
+                <div class="flex gap-3 items-center">
+                    <div class="flex gap-1 items-center">
+                        <h1 class="bg-[#00A96E] w-4 h-4 rounded-full"></h1>
+                        <h2>Open</h2>
+                    </div>
+                    <div class="flex gap-1 items-center">
+                        <h1 class="bg-[#A855F7] w-4 h-4 rounded-full"></h1>
+                        <h2>Closed</h2>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <hr class="text-gray-300">
+        <section class=" bg-white ">
+            <div id="AllCard" class="p-4 grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-3">
+                <!-- <div class="p-5 card bg-base-100 shadow-lg h-[350px] border-t-8 border-red-800">
+                    <div class=" flex justify-between">
+                        <img class="w-8 h-8" src="assets/Closed- Status .png" alt="">
+                        <h1 class="bg-red-200 px-3 py-1 rounded-2xl">Status</h1>
+                    </div>
+                    <div class="mt-2">
+                        <div class="h-14 border border-red-600">
+                            <h1 class="text-[16px] font-semibold">Fix navigation menu on mobile devices</h1>
+                        </div>
+                        <div class="border h-24">
+                            <p class="text-[14px] text-[#64748B]">The navigation menu doesn't collapse properly on
+                                mobile
+                                devices...</p>
+                        </div>
+                        <div class="mt-2 flex gap-2">
+                            <button
+                                class="bg-[#FEECEC] border border-[#EF4444] text-[#EF4444] px-3 py-1 rounded-2xl flex items-center gap-1">
+                                <img class="w-4 h-4" src="assets/BugDroid.png" alt=""> BUG</button>
+                            <button
+                                class="bg-[#FFF8DB] text-[#D97706] border border-[#FDE68A] px-3 py-1 rounded-2xl flex items-center gap-1">
+                                <img class="w-4 h-4" src="assets/Lifebuoy.png" alt=""> HELP WANTED</button>
+                        </div>
+                        <hr class="text-slate-300 my-5">
+                    </div>
+                    <h1 class="text-[14px] text-[#64748B]">date</h1>
+                    <h2 class="text-[14px] text-[#64748B]">name</h2>
+                </div> -->
+            </div>
+        </section>
+    </main>
+
+    <script src="script/index.js"></script>
+
+</body>
+
+</html>
